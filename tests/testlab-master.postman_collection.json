@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "f473b1bf-99c8-4dfc-b8ec-f33a771a3d30",
+		"name": "testlab-master",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SW_starships",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7af01628-b5b7-47af-ade8-19aed98113d3",
+						"exec": [
+							"pm.test(\"Response must be valid [Status=200] and have a body.\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.be.ok;",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.json; // this assertion also checks if a body exists",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1sec.\", function () {",
+							"    // we assume that the API documentation consider 1 second the limit for the user's flow of thought to stay uninterrupted",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test(\"Total starships species is 7.\", function () {",
+							"    // must be the same value than the object \"count\" and according with documentation --> https://swapi.co/about",
+							"    var body = JSON.parse(responseBody);",
+							"    pm.expect(body.species.length).to.eql(7);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present and it is application/json.\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Body matches string.\", function () {",
+							"    // we check a ramdom strings in the body",
+							"    pm.expect(pm.response.text()).to.include(\"Imperial shuttle\", \"Millennium Falcon\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3080/starships",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"starships"
+					]
+				},
+				"description": "GET all the starship resources."
+			},
+			"response": []
+		},
+		{
+			"name": "SW_all",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7af01628-b5b7-47af-ade8-19aed98113d3",
+						"exec": [
+							"pm.test(\"Response must be valid [Status=200] and have a body.\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.be.ok;",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.json; // this assertion also checks if a body exists",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1sec.\", function () {",
+							"    // we assume that the API documentation consider 1 second the limit for the user's flow of thought to stay uninterrupted",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test(\"Total starships species is 7.\", function () {",
+							"    // must be the same value than the object \"count\" and according with documentation --> https://swapi.co/about",
+							"    var body = JSON.parse(responseBody);",
+							"    pm.expect(body.species.length).to.eql(7);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present and it is application/json.\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Body matches string.\", function () {",
+							"    // we check a ramdom strings in the body",
+							"    pm.expect(pm.response.text()).to.include(\"Jedi starfighter\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3080/starships",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"starships"
+					]
+				},
+				"description": "GET all the starship&vehicles resources."
+			},
+			"response": []
+		},
+		{
+			"name": "SW_vehicles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7af01628-b5b7-47af-ade8-19aed98113d3",
+						"exec": [
+							"pm.test(\"Response must be valid [Status=200] and have a body.\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.be.ok;",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.json; // this assertion also checks if a body exists",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1sec.\", function () {",
+							"    // we assume that the API documentation consider 1 second the limit for the user's flow of thought to stay uninterrupted",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test(\"Total species is 7.\", function () {",
+							"    // must be the same value than the object \"count\" and according with documentation --> https://swapi.co/about",
+							"    var body = JSON.parse(responseBody);",
+							"    pm.expect(body.species.length).to.eql(7);",
+							"})",
+							"",
+							"pm.test(\"Content-Type is present and it is application/json.\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Body matches string.\", function () {",
+							"    // we check a ramdom strings in the body",
+							"    pm.expect(pm.response.text()).to.include(\"Sith speeder\", \"Tsmeu-6 personal wheel bike\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3080/vehicles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"vehicles"
+					]
+				},
+				"description": "GET all the starship resources."
+			},
+			"response": []
+		}
+	]
+}
